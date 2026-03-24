@@ -38,7 +38,7 @@ spec:
         - name: fitness-data
           mountPath: /data/db
       volumes:
-      -name: fitness-data
+      - name: fitness-data
        emptyDir:
          sizeLimit: "512"
 ---
