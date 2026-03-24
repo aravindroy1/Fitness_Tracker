@@ -40,7 +40,7 @@ spec:
       volumes:
       - name: fitness-data
        emptyDir:
-         sizeLimit: "512"
+         sizeLimit: "512Mi"
 ---
 apiVersion: v1
 kind: Service
