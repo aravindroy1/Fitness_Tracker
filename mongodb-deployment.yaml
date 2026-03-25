@@ -1,3 +1,4 @@
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -14,7 +15,6 @@ spec:
   selector:
     matchLabels:
       app: fitness-mongo
-
   template:
     metadata:
       labels:
@@ -27,22 +27,22 @@ spec:
         - containerPort: 27017
         
         resources:
+
           limits:
             memory: "512Mi"
             cpu: "200m"
           requests:
             memory: "256Mi"
             cpu: "100m"
-
         volumeMounts:
-        - name: fitness-data
+        - name: mongo-data
           mountPath: /data/db
-
       volumes:
-      - name: fitness-data
-        hostPath:
-          path: /data/ust
-          type: Directory
+      - name: mongo-data
+        persistentVolumeClaim:
+          claimName: fitness-pvc
+
+       
 ---
 apiVersion: v1
 kind: Service
