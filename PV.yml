@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: fitness-pv
+spec: 
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  PersistentVolumeReclaimPolicy: Retain
+
+  nfs:
+    path: /nfs-data
+    server: 13.232.83.124
+  
