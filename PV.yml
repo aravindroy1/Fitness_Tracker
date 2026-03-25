@@ -7,7 +7,7 @@ spec:
     storage: 10Gi
   accessModes:
     - ReadWriteMany
-  PersistentVolumeReclaimPolicy: Retain
+  persistentVolumeReclaimPolicy: Retain
 
   nfs:
     path: /nfs-data
