@@ -1,0 +1,26 @@
+name: PR CI Pipeline
+
+on:
+pull_request:
+branches:
+- main
+
+jobs:
+pr-check:
+runs-on: ubuntu-latest
+
+steps:
+  - name: Checkout
+    uses: actions/checkout@v3
+
+  - name: Setup Node
+    uses: actions/setup-node@v3
+    with:
+      node-version: '18'
+
+  - name: Install Dependencies
+    run: npm install
+
+  - name: Build Docker Image (Validation)
+    run: docker build -t test-image .
+
