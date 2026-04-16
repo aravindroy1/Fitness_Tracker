@@ -21,7 +21,10 @@ spec:
   replicas: 2
 
   strategy:
-    canary: {} 
+    blueGreen:
+      activeService: fitness-active
+      previewService: fitness-preview
+      autoPromotionEnabled: false
 
   selector:
     matchLabels:
