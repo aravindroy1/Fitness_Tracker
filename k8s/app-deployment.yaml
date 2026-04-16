@@ -18,7 +18,7 @@ kind: Deployment
 metadata:
   name: fitness-tracker-app
 spec:
-  replicas: 1
+  replicas: 10
 
   strategy:
     type: RollingUpdate
