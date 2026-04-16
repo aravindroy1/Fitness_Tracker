@@ -53,16 +53,3 @@ spec:
           - configMapRef:
               name: fitness-config
       
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: fitness-tracker-service
-spec:
-  selector:
-    app: fitness-tracker-app
-  ports:
-  - port: 80
-    targetPort: 5000
-  type: ClusterIP
