@@ -33,14 +33,10 @@ spec:
     metadata:
       labels:
         app: fitness-tracker-app
-      annotations:
-        ad.datadoghq.com/fitness-tracker-app.logs: >-
-          [{"source":"nodejs","service":"fitness-tracker-service"},
-           {"source":"nodejs","service":"fitness-tracker-app"}]
     spec:
       containers:
         - name: fitness-tracker-app
-          image: pulkit197/fitness_tracker-master-copy3-fitness-app:latest
+          image: aravindroy1/flower-img:latest
           ports:
             - containerPort: 5000
           resources:
