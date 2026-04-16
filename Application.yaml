@@ -8,7 +8,7 @@ spec:
 
   source:
     repoURL: https://github.com/aravindroy1/Fitness_Tracker.git
-    targetRevision: HEAD
+    targetRevision: main
     path: k8s
 
   destination:
