@@ -36,7 +36,7 @@ spec:
     spec:
       containers:
         - name: fitness-tracker-app
-          image: aravindroy1/flower-img:latest
+          image: pulkit197/fitness_tracker-master-copy3-fitness-app:latest
           ports:
             - containerPort: 5000
           resources:
