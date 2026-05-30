@@ -10,22 +10,15 @@ data:
 
 ---
 
-
-
-
-apiVersion: argoproj.io/v1alpha1
-kind: Rollout
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: fitness-tracker-app
   namespace: fitness-ns
 spec:
   replicas: 3
 
-  strategy:
-    blueGreen:
-      activeService: fitness-active
-      previewService: fitness-preview
-      autoPromotionEnabled: false
+ 
 
   selector:
     matchLabels:
