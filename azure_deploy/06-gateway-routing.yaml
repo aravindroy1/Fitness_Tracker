@@ -3,6 +3,10 @@ kind: Gateway
 metadata:
   name: main-gateway
   namespace: default
+  annotations:
+    # THIS IS THE MAGIC LINE: It tells Azure to create an Internal Load Balancer
+    # because Public Load Balancers are blocked on Private Clusters!
+    service.beta.kubernetes.io/azure-load-balancer-internal: "true"
 spec:
   gatewayClassName: kgateway
   listeners:
