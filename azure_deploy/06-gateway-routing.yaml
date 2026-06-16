@@ -30,7 +30,19 @@ spec:
     - path:
         type: PathPrefix
         value: /fitness
-    # This filter removes "/fitness" before sending it to the pod 
+    - path:
+        type: PathPrefix
+        value: /css
+    - path:
+        type: PathPrefix
+        value: /js
+    - path:
+        type: PathPrefix
+        value: /assets
+    - path:
+        type: PathPrefix
+        value: /pages
+    # This filter removes the matched prefix before sending it to the pod 
     # so the app doesn't get confused and return a 404
     filters:
     - type: URLRewrite
