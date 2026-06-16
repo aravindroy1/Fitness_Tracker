@@ -19,10 +19,38 @@ spec:
   parentRefs:
   - name: main-gateway
   rules:
+  # ---------------------------------------------------------
+  # PATH 1: Traffic going to /fitness
+  # ---------------------------------------------------------
   - matches:
     - path:
         type: PathPrefix
-        value: /
+        value: /fitness
+    # This filter removes "/fitness" before sending it to the pod 
+    # so the app doesn't get confused and return a 404
+    filters:
+    - type: URLRewrite
+      urlRewrite:
+        path:
+          type: ReplacePrefixMatch
+          replacePrefixMatch: /
     backendRefs:
     - name: fitness-tracker-service
+      port: 80
+
+  # ---------------------------------------------------------
+  # PATH 2: Traffic going to /retail
+  # ---------------------------------------------------------
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /retail
+    filters:
+    - type: URLRewrite
+      urlRewrite:
+        path:
+          type: ReplacePrefixMatch
+          replacePrefixMatch: /
+    backendRefs:
+    - name: capsule-service # Your other service from your original HTTP.yml
       port: 80
