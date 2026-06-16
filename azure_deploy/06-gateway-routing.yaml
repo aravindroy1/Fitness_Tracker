@@ -30,6 +30,21 @@ spec:
     - path:
         type: PathPrefix
         value: /fitness
+    # This filter removes /fitness before sending it to the pod 
+    filters:
+    - type: URLRewrite
+      urlRewrite:
+        path:
+          type: ReplacePrefixMatch
+          replacePrefixMatch: /
+    backendRefs:
+    - name: fitness-tracker-service
+      port: 80
+
+  # ---------------------------------------------------------
+  # PATH 1.5: Static Assets for the Fitness App
+  # ---------------------------------------------------------
+  - matches:
     - path:
         type: PathPrefix
         value: /css
@@ -42,14 +57,6 @@ spec:
     - path:
         type: PathPrefix
         value: /pages
-    # This filter removes the matched prefix before sending it to the pod 
-    # so the app doesn't get confused and return a 404
-    filters:
-    - type: URLRewrite
-      urlRewrite:
-        path:
-          type: ReplacePrefixMatch
-          replacePrefixMatch: /
     backendRefs:
     - name: fitness-tracker-service
       port: 80
